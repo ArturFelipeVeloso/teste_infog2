@@ -1,6 +1,23 @@
+<!-- <table style="width:100%" border="10px">
+    <tr>
+        <th>Nome</th>
+        <th>Detalhes</th>
+        <th>Editar</th>
+        <th>Deletar</th>
+    </tr>
+    <tr>
+         {% for o in object_list %}
+            <td>{{ o.name }}</td>
+            <td><a href="/detail/{{o.id}}">Ver</a></td>
+            <td><a href="/edit/{{o.id}}">Editar</a></td>
+            <td><a href="/delete/{{o.id}}">Excluir</a></td>
+         {% endfor %}
+    </tr>
+</table> -->
+
 <ul>
     {% for o in object_list %}
-        <li>{{ o.name }} <a href="/detail/{{o.id}}">Ver</a> <a href="/edit/{{o.id}}">Editar</a></li>
+        <li>{{ o.name }} <a href="/detail/{{o.id}}">Ver</a> <a href="/edit/{{o.id}}">Editar</a> <a href="/delete/{{o.id}}">Excluir</a></li>
     {% endfor %}
 </ul>
 <a href="/add/">Add</a>
