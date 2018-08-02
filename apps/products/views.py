@@ -6,8 +6,7 @@ from apps.products.forms import ProductForm
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
-from django.views.generic import DetailView
-
+from django.views.generic import DetailView, UpdateView
 
 class ProductListView(ListView):
     model = Product
@@ -23,3 +22,8 @@ class ProductCreate(CreateView):
 class ProductDetailView(DetailView):
     model = Product
     template_name = "products/detail.html"
+
+class ProductUpdate(UpdateView):
+    model = Product
+    form_class = ProductForm
+    template_name = "products/edit.html"
