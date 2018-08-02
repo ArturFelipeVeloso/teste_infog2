@@ -15,3 +15,7 @@ class Product(models.Model):
         ordering = ['-created_at']
         verbose_name_plural = "Produtos"
         verbose_name_plural = "Produto"
+
+
+    def get_absolute_url(self):
+        return "/detail/%d/" % (self.id)
