@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{%load static%}
+
 {% block title %} {{ block.super }} Detalhes {% endblock title %}
 
 {% block nav %} {{ block.super }}
@@ -33,7 +35,7 @@
             <hr>
 
             <!-- Preview Image -->
-            <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+            <img class="img-fluid rounded" src="{%if object.picture %}{{object.picture.url}}{%else%}{% static 'img/default-img.gif' %}{% endif %}" alt="">
 
             <hr>
 

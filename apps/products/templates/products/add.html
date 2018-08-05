@@ -10,7 +10,7 @@
     <!-- <form method="post" action="">{% csrf_token %} {{form.as_p}}
         <input type="submit" value="Enviar">
     </form> -->
-        
+
     <!-- Container -->
     <div class="container">
 
@@ -21,7 +21,8 @@
             <div class="col-lg-12">
 
                 <!-- FORM -->
-                <form class="form-horizontal" method="post">{% csrf_token %}
+                <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
                     <fieldset>
                         <legend>Cadastro de Produto</legend>
                         {% for field in form %} {% if field.errors %}

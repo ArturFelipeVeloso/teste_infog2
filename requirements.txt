@@ -1,4 +1,6 @@
 certifi==2018.4.16
 Django==2.1
+djangorestframework==3.8.2
+Pillow==5.2.0
 python-decouple==3.1
 pytz==2018.5

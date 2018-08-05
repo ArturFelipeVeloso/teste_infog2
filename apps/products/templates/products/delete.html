@@ -1,4 +1,23 @@
-<form method="post" action="">{% csrf_token %} {{form.as_p}}
-    <p>Você tem certeza que deseja excluir "{{ object.name }}"?</p>
-    <input type="submit" value="Confirm" />
-</form>
+{% extends 'base.html' %} 
+
+{% block title %} {{ block.super }} Adicionar {% endblock title %} 
+
+{% block nav %} 
+{{ block.super}} <li class="active">Adicionar Produto</li>
+{% endblock nav %} 
+
+{% block body %}
+
+<div class="container">
+
+    <!-- ROW -->
+    <div class="row">
+        <form method="post" action="">{% csrf_token %} {{form.as_p}}
+            <p>Você tem certeza que deseja excluir "{{ object.name }}"?</p>
+            <a href="/" class="btn btn-danger">Cancelar</a>
+            <input type="submit" class="btn btn-primary" value="Confirm" />
+        </form>
+
+    </div>
+</div>
+{% endblock body %}
