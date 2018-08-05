@@ -1,23 +1,86 @@
-<!-- <table style="width:100%" border="10px">
-    <tr>
-        <th>Nome</th>
-        <th>Detalhes</th>
-        <th>Editar</th>
-        <th>Deletar</th>
-    </tr>
-    <tr>
-         {% for o in object_list %}
-            <td>{{ o.name }}</td>
-            <td><a href="/detail/{{o.id}}">Ver</a></td>
-            <td><a href="/edit/{{o.id}}">Editar</a></td>
-            <td><a href="/delete/{{o.id}}">Excluir</a></td>
-         {% endfor %}
-    </tr>
-</table> -->
+{% extends 'base.html' %} 
 
-<ul>
-    {% for o in object_list %}
-        <li>{{ o.name }} <a href="/detail/{{o.id}}">Ver</a> <a href="/edit/{{o.id}}">Editar</a> <a href="/delete/{{o.id}}">Excluir</a></li>
-    {% endfor %}
-</ul>
-<a href="/add/">Add</a>
+{% block title %} {{ block.super }} Todos {% endblock title %} 
+
+{% block nav %}
+    {{ block.super }} 
+        <li class="active">Todos os Produtos</li>    
+        <li>
+            <a href="/add/">Adicionar novo Produto</a>
+        </li>
+    {% endblock nav %}
+
+{% block body %} 
+    <!-- <ul>
+        {% for o in object_list %}
+        <li>{{ o.name }}
+            <a href="/detail/{{o.id}}">Ver</a>
+            <a href="/edit/{{o.id}}">Editar</a>
+            <a href="/delete/{{o.id}}">Excluir</a>
+        </li>
+        {% endfor %}
+    </ul> -->
+    
+    <!-- <a href="/add/">Add</a> -->
+    
+    <div class="col-md-12" role="main">
+        <div class="bs-example" data-example-id="thumbnails-with-custom-content">
+            <div class="row">
+                
+                {% for o in object_list %}
+                    <div class="col-sm-6 col-md-3" style="height:80%">
+                        <div class="thumbnail">
+                            <img alt="100%x200" data-src="holder.js/100%x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMzE5IiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMxOSAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MjAwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTY1MDE0MzdlYmUgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxNnB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNjUwMTQzN2ViZSI+PHJlY3Qgd2lkdGg9IjMxOSIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMTcuNDIxODc1IiB5PSIxMDcuMiI+MzE5eDIwMDwvdGV4dD48L2c+PC9nPjwvc3ZnPg=="
+                                data-holder-rendered="true" style="height: 200px; width: 100%; display: block;">
+                            <div class="caption">
+                                <center>
+                                <h3>{{ o.name }}</h3>
+                                <h4>R${{ o.price }}</h4>
+                                <!-- <p><b>Descrição do Produto:</b></p>
+                                <p>{{ o.description }}.</p> -->
+                                
+                                <p>
+                                    <a href="/detail/{{o.id}}" class="btn btn-primary" role="button">Ver</a>
+                                    <a href="/edit/{{o.id}}" class="btn btn-warning" role="button">Editar</a>
+                                    <a href="/delete/{{o.id}}" class="btn btn-danger" role="button">Excluir</a>
+                                    <!-- <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#confirm" product="{{o}}">Confirmação</button> -->
+                                </p>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    
+    <div class="modal fade" id="confirm" role="dialog">
+        <div class="modal-dialog modal-md">
+    
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p> Você tem certeza que deseja excluir "{{ product.o.name }}"? </p>
+                </div>
+                <div class="modal-footer">
+                    <a href="/delete/{{o.id}}" type="button" class="btn btn-danger" id="delete">Apagar Registo</a>
+                    <button type="submit" value="Confirm" data-dismiss="modal" class="btn btn-default">Cancelar</button>
+                </div>
+            </div>
+    
+        </div>
+    </div> -->
+    
+    
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script> -->
+    
+
+    {% endblock body %}
